@@ -2,7 +2,13 @@
 export default defineNuxtConfig({
   app: {
     baseURL: '/sakinahstory.github.io/',
-    buildAssetsDir: 'assets'
+    buildAssetsDir: 'assets',
+    cdnURL: 'https://z-anah.github.io/sakinahstory.github.io' // Add CDN URL configuration
+  },
+
+  // Configure public assets directory
+  dir: {
+    public: 'public'
   },
 
   routeRules: {
