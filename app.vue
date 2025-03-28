@@ -1,11 +1,11 @@
 <template>
   <div class="background">
 
-    <img src="./images/rings.png" alt="My Image" width="120" style="margin-bottom: 1em;">
+    <img :src="/images/rings.png" alt="My Image" width="120" style="margin-bottom: 1em;">
 
-    <img src="./images/alhamdulillah.png" alt="My Image" width="300" style="margin-bottom: 4em;">
+    <img src="/images/alhamdulillah.png" alt="My Image" width="300" style="margin-bottom: 4em;">
 
-    <p style="margin-bottom: 4em;">BY THE GRACE OF ALLAH (SWT), WE,</p>
+    <p style="margin-bottom: 4em;">BY THE GRACE OF ALLAH (SWT), WE, 3</p>
 
     <h1>PUTRI</h1>
 
