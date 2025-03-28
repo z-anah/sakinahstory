@@ -66,12 +66,12 @@ const WelcomeCard = ({ BASE_PATH, isVisible }) => {
         transition={{ duration: 0.6, delay: 1.2 }}
         src={`${BASE_PATH}/images/crown.png`}
         alt="Crown"
-        className="h-5 mb-24"
+        className="h-5 mb-28"
       />
       <motion.img
         src={`${BASE_PATH}/images/scroll.png`}
         alt="Scroll"
-        className="h-7"
+        className="h-5"
         animate={{
           y: [0, -10, 0],
           opacity: [0.6, 1, 0.6],

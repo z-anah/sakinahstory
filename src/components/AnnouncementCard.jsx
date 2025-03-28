@@ -122,14 +122,14 @@ const AnnouncementCard = ({ BASE_PATH, isVisible }) => {
         animate={isVisible ? "visible" : "hidden"}
         variants={fadeInUp}
         transition={{ duration: 0.6, delay: 2.2 }}
-        className="text-xs mb-17"
+        className="text-xs mb-28"
       >
         AND WE MADE YOU BY PAIR
       </motion.p>
       <motion.img
         src={`${BASE_PATH}/images/scroll.png`}
         alt="Scroll"
-        className="h-7"
+        className="h-5"
         animate={{
           y: [0, -10, 0],
           opacity: [0.6, 1, 0.6],
