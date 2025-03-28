@@ -4,22 +4,16 @@ p {
   font-family: 'Roboto Flex', sans-serif;
   color: #FFEFCF;
   letter-spacing: 0.5em;
-  margin: 0;
-  padding: 0;
 }
 
 h1, h3 {
   font-family: 'Cormorant Garamond', serif;
   color: #FFEFCF;
-  font-size: 4em;
   letter-spacing: 0.5em;
-  font-weight: 1;
-  margin: 0;
-  padding: 0;
+  font-weight: 100;
 }
 
 h3 {
-  font-size: 1.8em;
   letter-spacing: 0.5em;
   font-weight: 1;
 }
@@ -27,20 +21,6 @@ h3 {
 h2 {
   font-family: 'Lavishly Yours', cursive;
   color: #FFEFCF;
-  font-size: 3em;
-  margin: 0;
-  padding: 0;
 }
 
-.background {
-  background-image: url('/images/mobile.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
-}
+

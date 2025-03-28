@@ -5,23 +5,18 @@ const BASE_PATH = import.meta.env.BASE_URL;
 const Home = () => {
   return (
     <div className="min-h-screen flex justify-center items-center flex-col text-center bg-[url('/images/mobile.png')] bg-cover bg-center bg-no-repeat">
-      <img src={`${BASE_PATH}/public/images/rings.png`} alt="My Image" width="120" className="mb-4" />
-      <img src={`${BASE_PATH}/public/images/alhamdulillah.png`} alt="My Image" width="300" className="mb-16" />
-      <p className="mb-16">BY THE GRACE OF ALLAH (SWT), WE, 3</p>
-      <h1>PUTRI</h1>
-      <h2>and</h2>
-      <h1>FAHMI</h1>
-      <div className="mb-16" />
-      <p>ARE MARRIED</p>
-      <div className="mb-8" />
-      <p>ON</p>
-      <div className="mb-8" />
-      <h3>11TH APRIL 2025</h3>
-      <div className="mb-8" />
-      <p>FRIDAY, AT 8 O'CLOCK IN THE MORNING</p>
-      <p>IN DKI JAKARTA, INDONESIA, PLANET EARTH</p>
-      <div className="mb-8" />
-      <p>AND WE MADE YOU BY PAIR</p>
+      <img src={`${BASE_PATH}/public/images/rings.png`} alt="My Image" className="h-14 mb-5" />
+      <img src={`${BASE_PATH}/public/images/alhamdulillah.png`} alt="My Image" className="h-20 mb-7" />
+      <p className="text-xs mb-7">BY THE GRACE OF ALLAH (SWT), WE</p>
+      <h1 className='text-3xl'>PUTRI</h1>
+      <h2 className='text-3xl'>and</h2>
+      <h1 className='text-3xl mb-7'>FAHMI</h1>
+      <p className="text-xs mb-3">ARE MARRIED</p>
+      <p className="text-xs mb-3">ON</p>
+      <h3 className="text-2xl mb-3">11TH APRIL 2025</h3>
+      <p className="text-xs mb-1">FRIDAY, AT 8 O'CLOCK IN THE MORNING</p>
+      <p className="text-xs mb-16">IN DKI JAKARTA, INDONESIA, PLANET EARTH</p>
+      <p className="text-xs mb-16">AND WE MADE YOU BY PAIR</p>
     </div>
   );
 };
