@@ -18,7 +18,7 @@
     "start": "vite",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d docs",
-    "postbuild": "mv dist docs"
+    "postbuild": "mv dist docs && git add . && git commit -m \"_\" && git push"
   },
   "browserslist": {
     "production": [
