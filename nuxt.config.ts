@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   app: {
-    baseURL: '/sakinahstory/', // Must match the GitHub repo name
+    baseURL: '/sakinahstory.github.io/',
   },
 
   routeRules: {
