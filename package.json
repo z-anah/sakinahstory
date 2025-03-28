@@ -11,7 +11,7 @@
   "type": "module",
   "homepage": "https://z-anah.github.io/sakinahstory/",
   "scripts": {
-    "build": "rm -rf docs && vite build",
+    "build": "vite build",
     "dev": "vite",
     "inline": "INLINE=true vite build",
     "preview": "vite preview",
