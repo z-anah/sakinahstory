@@ -1,9 +1,9 @@
 <template>
   <div class="background">
 
-    <img src="/rings.png" alt="My Image" width="120" style="margin-bottom: 1em;">
+    <img src="/images/rings.png" alt="My Image" width="120" style="margin-bottom: 1em;">
 
-    <img src="/alhamdulillah.png" alt="My Image" width="300" style="margin-bottom: 4em;">
+    <img src="/images/alhamdulillah.png" alt="My Image" width="300" style="margin-bottom: 4em;">
 
     <p style="margin-bottom: 4em;">BY THE GRACE OF ALLAH (SWT), WE, 3</p>
 
@@ -75,7 +75,6 @@ h2 {
   background-position: center;
   background-repeat: no-repeat;
   min-height: 100vh;
-  /* content to be in middle */
   display: flex;
   justify-content: center;
   align-items: center;
