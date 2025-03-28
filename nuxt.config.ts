@@ -2,6 +2,7 @@
 export default defineNuxtConfig({
   app: {
     baseURL: '/sakinahstory.github.io/',
+    buildAssetsDir: 'assets'
   },
 
   routeRules: {
