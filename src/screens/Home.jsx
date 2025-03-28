@@ -5,8 +5,8 @@ const BASE_PATH = import.meta.env.BASE_URL;
 const Home = () => {
   return (
     <div className="min-h-screen flex justify-center items-center flex-col text-center bg-[url('/images/mobile.png')] bg-cover bg-center bg-no-repeat">
-      <img src={`${BASE_PATH}/public/images/rings.png`} alt="My Image" className="h-14 mb-5" />
-      <img src={`${BASE_PATH}/public/images/alhamdulillah.png`} alt="My Image" className="h-20 mb-7" />
+      <img src={`${BASE_PATH}/images/rings.png`} alt="My Image" className="h-14 mb-5" />
+      <img src={`${BASE_PATH}/images/alhamdulillah.png`} alt="My Image" className="h-20 mb-7" />
       <p className="text-xs mb-7">BY THE GRACE OF ALLAH (SWT), WE</p>
       <h1 className='text-3xl'>PUTRI</h1>
       <h2 className='text-3xl'>and</h2>
