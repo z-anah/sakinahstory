@@ -11,13 +11,14 @@
   "type": "module",
   "homepage": "https://z-anah.github.io/sakinahstory/",
   "scripts": {
-    "build": "vite build",
+    "build": "rm -rf docs && vite build",
     "dev": "vite",
     "inline": "INLINE=true vite build",
     "preview": "vite preview",
     "start": "vite",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d docs",
+    "postbuild": "mv dist docs"
   },
   "browserslist": {
     "production": [
