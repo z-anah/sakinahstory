@@ -1,7 +1,6 @@
 import '../styles/Home.css';
 
 const BASE_PATH = import.meta.env.BASE_URL;
-console.log(`BASE_PATH: ${BASE_PATH}`);
 
 const Home = () => {
   return (
