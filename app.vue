@@ -1,9 +1,9 @@
 <template>
   <div class="background">
 
-    <img src="/images/rings.png" alt="My Image" width="120" style="margin-bottom: 1em;">
+    <img src="./images/rings.png" alt="My Image" width="120" style="margin-bottom: 1em;">
 
-    <img src="/images/alhamdulillah.png" alt="My Image" width="300" style="margin-bottom: 4em;">
+    <img src="./images/alhamdulillah.png" alt="My Image" width="300" style="margin-bottom: 4em;">
 
     <p style="margin-bottom: 4em;">BY THE GRACE OF ALLAH (SWT), WE,</p>
 
@@ -29,7 +29,7 @@
 
     <p>FRIDAY, AT 8 O'CLOCK IN THE MORNING</p>
     <p>IN DKI JAKARTA, INDONESIA, PLANET EARTH</p>
-    
+
     <div style="margin-bottom: 2em;" />
 
     <p>AND WE MADE YOU BY PAIR</p>
