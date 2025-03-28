@@ -3,7 +3,7 @@
 p {
   font-family: 'Roboto Flex', sans-serif;
   color: #FFEFCF;
-  letter-spacing: 0.5em;
+  letter-spacing: 0.35em;
 }
 
 h1, h3 {
@@ -14,7 +14,7 @@ h1, h3 {
 }
 
 h3 {
-  letter-spacing: 0.5em;
+  letter-spacing: 0.3em;
   font-weight: 1;
 }
 
