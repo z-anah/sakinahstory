@@ -1,9 +1,9 @@
 <template>
   <div class="background">
 
-    <img src="https://z-anah.github.io/sakinahstory.github.io/images/rings.png" alt="My Image" width="120" style="margin-bottom: 1em;">
+    <img src="/images/rings.png" alt="My Image" width="120" style="margin-bottom: 1em;">
 
-    <img src="https://z-anah.github.io/sakinahstory.github.io/images/alhamdulillah.png" alt="My Image" width="300" style="margin-bottom: 4em;">
+    <img src="/images/alhamdulillah.png" alt="My Image" width="300" style="margin-bottom: 4em;">
 
     <p style="margin-bottom: 4em;">BY THE GRACE OF ALLAH (SWT), WE, 3</p>
 
@@ -70,7 +70,7 @@ h2 {
 }
 
 .background {
-  background-image: url('https://z-anah.github.io/sakinahstory.github.io/images/images/mobile.png');
+  background-image: url('/images/mobile.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
