@@ -77,7 +77,7 @@ const AnnouncementCard = ({ BASE_PATH, isVisible }) => {
         animate={isVisible ? "visible" : "hidden"}
         variants={fadeInUp}
         transition={{ duration: 0.6, delay: 1.2 }}
-        className="text-xs mb-3"
+        className="text-xs mb-2"
       >
         ARE MARRIED
       </motion.p>
@@ -86,7 +86,7 @@ const AnnouncementCard = ({ BASE_PATH, isVisible }) => {
         animate={isVisible ? "visible" : "hidden"}
         variants={fadeInUp}
         transition={{ duration: 0.6, delay: 1.4 }}
-        className="text-xs mb-3"
+        className="text-xs mb-2"
       >
         ON
       </motion.p>
@@ -113,7 +113,7 @@ const AnnouncementCard = ({ BASE_PATH, isVisible }) => {
         animate={isVisible ? "visible" : "hidden"}
         variants={fadeInUp}
         transition={{ duration: 0.6, delay: 2.0 }}
-        className="text-xs mb-16"
+        className="text-xs mb-14"
       >
         IN DKI JAKARTA, INDONESIA, PLANET EARTH
       </motion.p>
@@ -122,7 +122,7 @@ const AnnouncementCard = ({ BASE_PATH, isVisible }) => {
         animate={isVisible ? "visible" : "hidden"}
         variants={fadeInUp}
         transition={{ duration: 0.6, delay: 2.2 }}
-        className="text-xs mb-28"
+        className="text-xs mb-14"
       >
         AND WE MADE YOU BY PAIR
       </motion.p>

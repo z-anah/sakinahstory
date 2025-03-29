@@ -1,26 +1,59 @@
 import '../styles/Home.css';
 
+import { motion, useAnimation } from "framer-motion";
+import { useRef, useState } from "react";
+import WelcomeCard from "../components/WelcomeCard";
+import AnnouncementCard from "../components/AnnouncementCard";
+
+const CARD_HEIGHT = window.innerHeight;
 const BASE_PATH = import.meta.env.BASE_URL;
+const cards = ["Card 1", "Card 2"];
 
 const Home = () => {
+  const controls = useAnimation();
+  const containerRef = useRef(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [visibleCard, setVisibleCard] = useState(0);
+
+  const snapToIndex = (index) => {
+    setCurrentIndex(index);
+    setVisibleCard(index);
+    controls.start({
+      y: -index * CARD_HEIGHT,
+      transition: { type: "spring", stiffness: 300, damping: 30 },
+    });
+  };
+
   return (
-    <div className="min-h-screen bg-[url('/images/mobile.png')] bg-cover bg-center bg-no-repeat p-8">
-      <div className="min-h-[calc(100vh-4rem)] border-2 border-[#FFEFCF] flex justify-center items-center flex-col text-center p-4">
-        <img src={`${BASE_PATH}/images/rings.png`} alt="My Image" className="h-12 mb-5" />
-        <img src={`${BASE_PATH}/images/alhamdulillah.png`} alt="My Image" className="h-20 mb-7" />
-        <p className="text-xs mb-7">BY THE GRACE OF ALLAH (SWT), WE</p>
-        <h1 className='text-3xl'>PUTRI</h1>
-        <h2 className='text-3xl'>and</h2>
-        <h1 className='text-3xl mb-7'>FAHMI</h1>
-        <p className="text-xs mb-3">ARE MARRIED</p>
-        <p className="text-xs mb-3">ON</p>
-        <h3 className="text-2xl mb-3">11TH APRIL 2025</h3>
-        <p className="text-xs mb-1">FRIDAY, AT 8 O'CLOCK IN THE MORNING</p>
-        <p className="text-xs mb-16">IN DKI JAKARTA, INDONESIA, PLANET EARTH</p>
-        <p className="text-xs mb-16">AND WE MADE YOU BY PAIR</p>
-      </div>
-    </div>
+    <motion.div
+      ref={containerRef}
+      drag="y"
+      dragConstraints={{ top: -(cards.length - 1) * CARD_HEIGHT, bottom: 0 }}
+      onDragEnd={(event, info) => {
+        const velocity = info.velocity.y;
+        let newIndex = currentIndex;
+
+        if (velocity > 50) newIndex = Math.max(0, currentIndex - 1); // Swipe Down
+        else if (velocity < -50) newIndex = Math.min(cards.length - 1, currentIndex + 1); // Swipe Up
+
+        snapToIndex(newIndex);
+      }}
+      animate={controls}
+      style={{ position: "relative" }}
+    >
+      <motion.div style={{ height: CARD_HEIGHT }}>
+        <div className="min-h-screen bg-[url('/images/mobile.png')] bg-cover bg-center bg-no-repeat p-2">
+          <WelcomeCard BASE_PATH={BASE_PATH} isVisible={visibleCard === 0} />
+        </div>
+      </motion.div>
+      <motion.div style={{ height: CARD_HEIGHT }}>
+        <div className="min-h-screen bg-[url('/images/mobile.png')] bg-cover bg-center bg-no-repeat p-2">
+          <AnnouncementCard BASE_PATH={BASE_PATH} isVisible={visibleCard === 1} />
+        </div>
+      </motion.div>
+    </motion.div>
   );
 };
 
 export default Home;
+
