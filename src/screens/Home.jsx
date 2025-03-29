@@ -4,10 +4,11 @@ import { motion, useAnimation } from "framer-motion";
 import { useRef, useState } from "react";
 import WelcomeCard from "../components/WelcomeCard";
 import AnnouncementCard from "../components/AnnouncementCard";
+import CTACard from "../components/CTACard";
 
 const CARD_HEIGHT = window.innerHeight;
 const BASE_PATH = import.meta.env.BASE_URL;
-const cards = ["Card 1", "Card 2"];
+const cards = 3;
 
 const Home = () => {
   const controls = useAnimation();
@@ -28,13 +29,13 @@ const Home = () => {
     <motion.div
       ref={containerRef}
       drag="y"
-      dragConstraints={{ top: -(cards.length - 1) * CARD_HEIGHT, bottom: 0 }}
+      dragConstraints={{ top: -(cards - 1) * CARD_HEIGHT, bottom: 0 }}
       onDragEnd={(event, info) => {
         const velocity = info.velocity.y;
         let newIndex = currentIndex;
 
         if (velocity > 50) newIndex = Math.max(0, currentIndex - 1); // Swipe Down
-        else if (velocity < -50) newIndex = Math.min(cards.length - 1, currentIndex + 1); // Swipe Up
+        else if (velocity < -50) newIndex = Math.min(cards - 1, currentIndex + 1); // Swipe Up
 
         snapToIndex(newIndex);
       }}
@@ -49,6 +50,11 @@ const Home = () => {
       <motion.div style={{ height: CARD_HEIGHT }}>
         <div className="min-h-screen bg-[url('/images/mobile.png')] bg-cover bg-center bg-no-repeat p-2">
           <AnnouncementCard BASE_PATH={BASE_PATH} isVisible={visibleCard === 1} />
+        </div>
+      </motion.div>
+      <motion.div style={{ height: CARD_HEIGHT }}>
+        <div className="min-h-screen bg-[url('/images/mobile.png')] bg-cover bg-center bg-no-repeat p-2">
+          <CTACard BASE_PATH={BASE_PATH} isVisible={visibleCard === 2} />
         </div>
       </motion.div>
     </motion.div>
