@@ -73,7 +73,7 @@ const ChatCard = ({ BASE_PATH }) => {
   };
 
   return (
-    <div className="relative w-full h-[400px] flex items-center justify-center bg-[#131f1b] rounded-lg px-10 py-5">
+    <div className="relative w-full h-[350px] flex items-center justify-center bg-[#131f1b] rounded-lg px-10 py-5">
       <motion.button
         onClick={handlePrevious}
         className="absolute left-1 p-2 text-[#FFEFCF] hover:text-gray-700"

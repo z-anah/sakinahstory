@@ -3,7 +3,7 @@ import { EnvelopeIcon } from "@heroicons/react/24/outline";
 import ChatCard from "./ChatCard";
 
 const CTACard = ({ BASE_PATH }) => (
-  <div className="min-h-[calc(100vh-4rem)] border-2 border-[#FFEFCF] flex justify-between items-center flex-col text-center p-4">
+  <div className="min-h-[calc(100vh-6rem)] border-2 border-[#FFEFCF] flex justify-between items-center flex-col text-center p-2">
     <div className="w-full">
     </div>
     <div className="w-full">
