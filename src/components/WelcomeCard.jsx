@@ -12,7 +12,7 @@ const WelcomeCard = ({ BASE_PATH, isVisible }) => {
   };
 
   return (
-    <div className="min-h-[calc(100vh-1rem)] border-2 border-[#FFEFCF] flex justify-center items-center flex-col text-center p-4">
+    <div className="min-h-[calc(100vh-4rem)] border-2 border-[#FFEFCF] flex justify-center items-center flex-col text-center p-4">
       <motion.img
         initial="hidden"
         animate={isVisible ? "visible" : "hidden"}

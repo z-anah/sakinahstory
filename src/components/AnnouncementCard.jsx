@@ -17,7 +17,7 @@ const AnnouncementCard = ({ BASE_PATH, isVisible }) => {
   };
 
   return (
-    <div className="min-h-[calc(100vh-1rem)] border-2 border-[#FFEFCF] flex justify-center items-center flex-col text-center p-4">
+    <div className="min-h-[calc(100vh-4rem)] border-2 border-[#FFEFCF] flex justify-center items-center flex-col text-center p-4">
       <motion.img
         initial="hidden"
         animate={isVisible ? "visible" : "hidden"}
@@ -34,7 +34,7 @@ const AnnouncementCard = ({ BASE_PATH, isVisible }) => {
         transition={{ duration: 0.6, delay: 0.2 }}
         src={`${BASE_PATH}/images/alhamdulillah.png`}
         alt="Alhamdulillah"
-        className="h-20 mb-7"
+        className="h-10 mb-7"
       />
       <motion.p
         initial="hidden"
