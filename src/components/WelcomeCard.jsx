@@ -12,7 +12,7 @@ const WelcomeCard = ({ BASE_PATH, isVisible }) => {
   };
 
   return (
-      <div className="min-h-[calc(100vh-6rem)] border-2 border-[#FFEFCF] flex justify-center items-center flex-col text-center p-2">
+    <div className="min-h-[calc(97dvh)] border-2 border-[#FFEFCF] flex justify-center items-center flex-col text-center p-2">
       <motion.img
         initial="hidden"
         animate={isVisible ? "visible" : "hidden"}
@@ -66,7 +66,7 @@ const WelcomeCard = ({ BASE_PATH, isVisible }) => {
         transition={{ duration: 0.6, delay: 1.2 }}
         src={`${BASE_PATH}/images/crown.png`}
         alt="Crown"
-        className="h-5 mb-28"
+        className="h-5 mb-20"
       />
       <motion.img
         src={`${BASE_PATH}/images/scroll.png`}

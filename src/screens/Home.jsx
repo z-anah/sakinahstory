@@ -29,13 +29,19 @@ const Home = () => {
     <motion.div
       ref={containerRef}
       drag="y"
-      dragConstraints={{ top: -(cards - 1) * CARD_HEIGHT, bottom: 0 }}
+      dragConstraints={{ 
+        top: -(cards - 1) * CARD_HEIGHT, 
+        bottom: currentIndex === cards - 1 ? -(cards - 1) * CARD_HEIGHT : 0 
+      }}
       onDragEnd={(event, info) => {
         const velocity = info.velocity.y;
         let newIndex = currentIndex;
 
-        if (velocity > 50) newIndex = Math.max(0, currentIndex - 1); // Swipe Down
-        else if (velocity < -50) newIndex = Math.min(cards - 1, currentIndex + 1); // Swipe Up
+        if (velocity > 50 && currentIndex > 0) {
+          newIndex = currentIndex - 1; // Swipe Down
+        } else if (velocity < -50 && currentIndex < cards - 1) {
+          newIndex = currentIndex + 1; // Swipe Up
+        }
 
         snapToIndex(newIndex);
       }}
