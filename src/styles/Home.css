@@ -1,24 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Flex&family=Cormorant+Garamond&family=Lavishly+Yours&display=swap');
 
-p {
+.home p {
   font-family: 'Roboto Flex', sans-serif;
   color: #FFEFCF;
   letter-spacing: 0.15em;
 }
 
-h1, h3 {
+.home h1,
+.home h3 {
   font-family: 'Cormorant Garamond', serif;
   color: #FFEFCF;
   letter-spacing: 0.25em;
   font-weight: 100;
 }
 
-h3 {
+.home h3 {
   letter-spacing: 0.15em;
   font-weight: 1;
 }
 
-h2 {
+.home h2 {
   font-family: 'Lavishly Yours', cursive;
   color: #FFEFCF;
 }

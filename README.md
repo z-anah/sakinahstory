@@ -23,6 +23,13 @@ pages
   admin
     users
     message_doas
+  dashboard
+    number_of_users
+    number_of_messages
+    number_of_gifts
+    number_of_places
+    number_of_seen
+    number_of_unseen
 
 wa
   picture

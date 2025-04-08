@@ -47,7 +47,7 @@ const WelcomeCard = ({ BASE_PATH, isVisible }) => {
         transition={{ duration: 0.6, delay: 0.6 }}
         className='text-3xl mb-14'
       >
-        BAPAK MUHAMMAD & IBU MANASIK
+        RONALDUS YOMAR SAKTI & NURUL HIDAYAT
       </motion.h1>
       <motion.p
         initial="hidden"
