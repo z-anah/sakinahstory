@@ -3,6 +3,7 @@ import { useState } from "react";
 
 const MessageForm = () => {
   const [isFocused, setIsFocused] = useState(false);
+  const [message, setMessage] = useState('');
 
   return (
     <form className="w-full max-w-md">
@@ -17,12 +18,18 @@ const MessageForm = () => {
         <textarea
           id="message"
           placeholder="Write your doa and message here..."
+          maxLength={400}
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
           className={`w-full p-3 rounded-lg bg-[#131f1b] text-[#FFEFCF] placeholder-[#273933]/60 border-2 transition-all duration-200 ${
             isFocused ? 'border-[#FFEFCF]' : 'border-transparent'
-          } min-h-[120px]`}
+          } min-h-[400px]`}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
         />
+        <div className="text-xs text-[#FFEFCF]/60 text-right">
+          {message.length}/300 characters
+        </div>
       </div>
 
       <button

@@ -53,7 +53,8 @@ const ChatCard = ({ BASE_PATH }) => {
   };
 
   return (
-    <div className="relative w-full h-[350px] flex items-center justify-center bg-[#131f1b]/70 rounded-lg px-10 py-5">
+    <div className="min-h-[calc(97dvh)] border-2 border-[#FFEFCF] flex justify-center items-center flex-col text-center p-2">
+    <div className="relative w-full h-[600px] flex items-center justify-center bg-[#131f1b]/70 rounded-lg px-10 py-5">
       <motion.button
         onClick={handlePrevious}
         className="absolute left-1 p-2 text-[#FFEFCF] hover:text-gray-700"
@@ -107,7 +108,7 @@ const ChatCard = ({ BASE_PATH }) => {
             duration: 0.8,
             ease: "easeInOut"
           }}
-          className="text-[#FFEFCF] italic text-sm max-h-[100px] overflow-y-auto custom-scrollbar"
+          className="text-[#FFEFCF] italic text-sm max-h-[500px] overflow-y-auto"
         >
           {chatData[currentIndex].message}
         </motion.h1>
@@ -136,6 +137,7 @@ const ChatCard = ({ BASE_PATH }) => {
       >
         <ChevronRightIcon className="h-4 w-4" />
       </motion.button>
+      </div>
     </div>
   );
 };

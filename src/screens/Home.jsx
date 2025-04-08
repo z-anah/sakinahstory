@@ -1,4 +1,4 @@
-import '../styles/Home.css';
+import '@styles/Home.css';
 
 import { motion, useAnimation } from "framer-motion";
 import { useRef, useState } from "react";

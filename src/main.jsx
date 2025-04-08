@@ -1,4 +1,4 @@
-import '@styles/custom.css';
+import '@styles/news.css';
 import '@styles/tailwind.css';
 
 import { StrictMode } from 'react';
