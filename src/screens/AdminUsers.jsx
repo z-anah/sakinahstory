@@ -1,62 +1,104 @@
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AdminMenu from "@components/admin/AdminMenu";
-import { PencilIcon, ShareIcon } from '@heroicons/react/20/solid';
+import { PencilIcon, ShareIcon, DocumentDuplicateIcon, CheckCircleIcon, XCircleIcon, IdentificationIcon } from '@heroicons/react/20/solid';
+import { ss_users2 } from '../data/chatData';
+import { SSUsersController } from '../controllers/ss_users_controller';
 
 const BASE_PATH = import.meta.env.BASE_URL;
 
 const AdminUsers = () => {
   const navigate = useNavigate();
+  const [users, setUsers] = useState([]);
+  const [groupedUsers, setGroupedUsers] = useState({});
+  const [byValues, setByValues] = useState([]);
+  const [selectedBy, setSelectedBy] = useState('all');
 
-  // Example data - replace with actual data fetching
-  const users = [
-    {
-      id: 1,
-      name: "User 1",
-      wa: "+6281234567890",
-      can_read_picture: true,
-      doa_message: "Sample doa",
-      updated_doa_message_at: "2023-10-01T12:00:00Z",
-      is_doa_message_reviewed: false,
-      has_seen_n_times: 3,
-      updated_seen_at: "2023-10-01T12:00:00Z",
-      place_at: "Jakarta",
-      by: 'putri',
+  useEffect(() => {
+    loadUsers();
+    loadGroupedUsers();
+    loadByValues();
+  }, []);
+
+  const loadUsers = async () => {
+    try {
+      const fetchedUsers = await SSUsersController.getUsers();
+      setUsers(fetchedUsers);
+    } catch (error) {
+      alert('Error loading users');
     }
-  ];
+  };
 
-  const handleShare = (wa) => {
-    const message = encodeURIComponent("Check this out!");
+  const loadGroupedUsers = async () => {
+    try {
+      const groups = await SSUsersController.getUsersByGroup();
+      setGroupedUsers(groups);
+    } catch (error) {
+      alert('Error loading user groups');
+    }
+  };
+
+  const loadByValues = async () => {
+    try {
+      const values = await SSUsersController.getUniqueByValues();
+      setByValues(values);
+    } catch (error) {
+      alert('Error loading by values');
+    }
+  };
+
+  const handleShare = async (wa, userId, userName) => {
+    const message = encodeURIComponent(
+      `Hello dear ${userName},\n\nWe've been preparing something very special and meaningful, and we're finally ready to share it with you. It's a joyful surprise that means a lot to us, and we hope it will make you smile too. Click the link below to discover it:\n\n<LINK>`
+    );
     const whatsappUrl = `https://wa.me/${wa.replace(/\+/g, '')}?text=${message}`;
     window.open(whatsappUrl, '_blank');
+    try {
+      await SSUsersController.updateUser(userId, { shared: true });
+      await loadUsers();
+    } catch (error) {
+      console.error('Error updating shared status:', error);
+    }
+  };
+
+  const handleCopyId = async (id) => {
+    navigator.clipboard.writeText(id);
+    try {
+      await SSUsersController.updateUser(id, { shared: true });
+      await loadUsers();
+      alert(`ID ${id} copied to clipboard`);
+    } catch (error) {
+      console.error('Error updating shared status:', error);
+    }
   };
 
   const handleEdit = (userId) => {
     navigate(`${BASE_PATH}/admin/user/${userId}/edit`);
   };
 
-  const handleFileUpload = (event) => {
-    const file = event.target.files[0];
-    const reader = new FileReader();
-    
-    reader.onload = (e) => {
-      const text = e.target.result;
-      const rows = text.split('\n');
-      const headers = rows[0].split(',');
-      
-      const users = rows.slice(1).map(row => {
-        const values = row.split(',');
-        const user = {};
-        headers.forEach((header, index) => {
-          user[header.trim()] = values[index]?.trim();
-        });
-        return user;
-      });
-      
+  const handleFileUpload = async (event) => {
+    try {
+      const file = event.target.files[0];
+      const users = await SSUsersController.parseCSVFile(file);
       console.log(JSON.stringify(users, null, 2));
-    };
-    
-    reader.readAsText(file);
+    } catch (error) {
+      alert('Error processing file');
+    }
   };
+
+  const handleImportSSUsers = async () => {
+    try {
+      const result = await SSUsersController.importUsers(ss_users2);
+      alert(result.message);
+      await loadUsers();
+    } catch (error) {
+      alert('Error importing users');
+    }
+  };
+
+  const filteredUsers = selectedBy === 'all'
+    ? users
+    : users.filter(user => (user.by || 'Unknown') === selectedBy);
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -64,9 +106,27 @@ const AdminUsers = () => {
         <AdminMenu />
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mb-8 bg-white shadow rounded-lg p-6">
+          <h2 className="text-xl font-semibold mb-4">Users by Inviter</h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {Object.entries(groupedUsers).map(([by, count]) => (
+              <div key={by} className="bg-gray-50 p-4 rounded-lg">
+                <div className="font-medium">{by}</div>
+                <div className="text-2xl font-bold text-indigo-600">{count}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-3xl font-bold text-gray-900">User Management</h1>
-          <div>
+          <div className="flex gap-4 items-center">
+            <button
+              onClick={handleImportSSUsers}
+              className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+            >
+              Import
+            </button>
             <input
               type="file"
               accept=".csv"
@@ -80,37 +140,43 @@ const AdminUsers = () => {
             />
           </div>
         </div>
-        
+
+        <div className="flex items-center mb-4 justify-between">
+          <select
+            value={selectedBy}
+            onChange={(e) => setSelectedBy(e.target.value)}
+            className="rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+          >
+            <option value="all">All By</option>
+            {byValues.map(by => (
+              <option key={by} value={by}>{by}</option>
+            ))}
+          </select>
+        </div>
         <div className="bg-white shadow rounded-lg overflow-hidden">
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Shared</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">WhatsApp</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Can Read Picture</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Can Read PIC</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Doa Message</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Views</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Place</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Seen X Times</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">By</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-              {users.map((user) => (
+              {filteredUsers.map((user) => (
                 <tr key={user.id}>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{user.id}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{user.name}</td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    {user.wa && (
-                      <button
-                        onClick={() => handleShare(user.wa)}
-                        className="text-green-600 hover:text-green-900 focus:outline-none"
-                        title="Share link"
-                      >
-                        <ShareIcon className="h-5 w-5 inline-block" aria-hidden="true" />
-                      </button>
+                    {user.shared ? (
+                      <CheckCircleIcon className="h-5 w-5 text-green-500" />
+                    ) : (
+                      <XCircleIcon className="h-5 w-5 text-gray-300" />
                     )}
                   </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{user.name}</td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                     {user.can_read_picture ? "Yes" : "No"}
                   </td>
@@ -118,11 +184,34 @@ const AdminUsers = () => {
                     {user.doa_message ? "has written" : "empty"}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{user.has_seen_n_times}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{user.place_at}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{user.by || '-'}</td>
                   <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+
+                    <button
+                      onClick={() => handleCopyId(user.id)}
+                      className="text-gray-200 hover:text-gray-300 focus:outline-none mr-3"
+                      title="Copy ID"
+                    >
+                      <IdentificationIcon className="h-5 w-5 inline-block" aria-hidden="true" />
+                    </button>
+                    <button
+                      onClick={() => handleShare(user.wa, user.id, user.name)}
+                      className={`text-gray-100 hover:text-gray-200 focus:outline-none mr-3 ${user.wa ? 'text-green-500' : 'text-gray-300'}`}
+                      title="Share link"
+                      disabled={!user.wa}
+                    >
+                      <ShareIcon className="h-5 w-5 inline-block" aria-hidden="true" />
+                    </button>
+                    <button
+                      onClick={() => handleCopyId(user.id)}
+                      className="text-gray-600 hover:text-gray-900 focus:outline-none mr-3"
+                      title="Copy ID"
+                    >
+                      <DocumentDuplicateIcon className="h-5 w-5 inline-block" aria-hidden="true" />
+                    </button>
                     <button
                       onClick={() => handleEdit(user.id)}
-                      className="text-indigo-600 hover:text-indigo-900 focus:outline-none mr-3"
+                      className="text-indigo-600 hover:text-indigo-900 focus:outline-none"
                     >
                       <PencilIcon className="h-5 w-5 inline-block" aria-hidden="true" />
                     </button>

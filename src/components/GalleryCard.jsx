@@ -24,14 +24,12 @@ const GalleryCard = ({ BASE_PATH, isVisible }) => {
   const createVariants = (index) => ({
     hidden: { 
       opacity: 0, 
-      y: 20,
       rotate: 0,
       x: 0,
       y: 0
     },
     visible: { 
       opacity: transforms[index]?.opacity || 1,
-      y: 0,
       rotate: transforms[index]?.rotation || 0,
       x: transforms[index]?.translateX || 0,
       y: transforms[index]?.translateY || 0
