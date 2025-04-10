@@ -55,7 +55,7 @@ const Home = () => {
   if (loading) {
     return <div className="min-h-screen bg-[url('/images/mobile.png')] bg-cover bg-center bg-repeat-y p-2">
       <div className="flex items-center justify-center h-screen">
-        <div className="animate-spin text-4xl">⭮</div>
+        <div className="animate-spin text-4xl">❤️</div>
       </div>
     </div>;
   }

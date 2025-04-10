@@ -9,20 +9,20 @@ export const chatData = [
 
 export const ss_users2 = [
   {
-    "name": "Putri Test",
-    "wa": "+6287772897512",
+    "name": "Ali Deniz",
+    "wa": "",
     "can_read_picture": false,
-    "place_at": "Depok, Indonesia",
-    "is_invited_dinner": true,
-    "by": "fahmi"
+    "place_at": "Turkey",
+    "is_invited_dinner": false,
+    "by": "putri"
   },
   {
-    "name": "Fahmi Test",
-    "wa": "+6287772897512",
+    "name": "Arda",
+    "wa": "",
     "can_read_picture": false,
-    "place_at": "Depok, Indonesia",
-    "is_invited_dinner": true,
-    "by": "fahmi"
+    "place_at": "Turkey",
+    "is_invited_dinner": false,
+    "by": "putri"
   },
 ];
 

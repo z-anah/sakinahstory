@@ -33,7 +33,7 @@ const ChatCard = ({ BASE_PATH, refreshTrigger }) => {
 
   return (
     <div className="min-h-[calc(90dvh)] flex justify-center items-center flex-col text-center p-2">
-      <div className="w-full h-[600px] flex items-center justify-between bg-[#131f1b]/70 rounded-lg px-10 py-5">
+      <div className="w-full h-[600px] flex items-center justify-between bg-[#131f1b]/70 rounded-lg py-5">
         <button
           onClick={handlePrevious}
           className="p-2 text-[#FFEFCF] hover:text-gray-700"
@@ -46,7 +46,7 @@ const ChatCard = ({ BASE_PATH, refreshTrigger }) => {
             alt="chat"
             className="h-4 self-center"
           />
-          <div className="flex flex-col items-start justify-start h-full w-full pt-20">
+          <div className="flex flex-col items-start justify-start h-full w-full pt-20 px-4">
             <div className="text-left mb-16">
               <p className="font-semibold text-[#FFEFCF]">{messages[currentIndex].name}</p>
               <p className="text-[#FFEFCF]/80 text-xs">{messages[currentIndex].location}</p>
