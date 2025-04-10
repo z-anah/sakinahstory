@@ -1,88 +1,69 @@
 import { motion } from "framer-motion";
 
-const WelcomeCard = ({ BASE_PATH, isVisible }) => {
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
-  };
-
-  const slideIn = {
-    hidden: { opacity: 0, x: -50 },
-    visible: { opacity: 1, x: 0 }
+const WelcomeCard = ({ BASE_PATH, user }) => {
+  const baseMotionProps = {
+    initial: { opacity: 0, y: 20 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true }
   };
 
   return (
-    <div className="min-h-[calc(97dvh)] border-2 border-[#FFEFCF] flex justify-center items-center flex-col text-center p-2">
-      <motion.img
-        initial="hidden"
-        animate={isVisible ? "visible" : "hidden"}
-        variants={fadeInUp}
-        transition={{ duration: 0.6 }}
-        src={`${BASE_PATH}/images/bismillah.png`}
-        alt="Bismillah"
-        className="h-10 mb-5"
-      />
-      <motion.img
-        initial="hidden"
-        animate={isVisible ? "visible" : "hidden"}
-        variants={fadeInUp}
-        transition={{ duration: 0.6, delay: 0.3 }}
-        src={`${BASE_PATH}/images/salam.png`}
-        alt="Salam"
-        className="h-10 mb-7"
-      />
-      <motion.p
-        initial="hidden"
-        animate={isVisible ? "visible" : "hidden"}
-        variants={slideIn}
-        transition={{ duration: 0.6, delay: 0.3 }}
-        className="text-xs mb-7"
-      >
-        DEAR
-      </motion.p>
+    <div className="min-h-[calc(100dvh)] flex justify-between items-center flex-col text-center p-10 relative">
+      <div className="flex justify-center items-center flex-col text-center" >
+        <motion.img
+          {...baseMotionProps}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          src={`${BASE_PATH}/images/bismillah.png`}
+          alt="Bismillah"
+          className="h-10 mb-5"
+        />
+        <motion.img
+          {...baseMotionProps}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          src={`${BASE_PATH}/images/salam.png`}
+          alt="Salam"
+          className="h-10 mb-7"
+        />
+      </div>
       <motion.h1
-        initial="hidden"
-        animate={isVisible ? "visible" : "hidden"}
-        variants={fadeInUp}
-        transition={{ duration: 0.6, delay: 0.6 }}
-        className='text-3xl mb-14'
+        {...baseMotionProps}
+        transition={{ duration: 0.5, delay: 0.8 }}
+        className='text-2xl mb-14 absolute top-1/2 -translate-y-1/2 p-10'
       >
-        RONALDUS YOMAR SAKTI & NURUL HIDAYAT
+        <div>
+          <motion.p
+            {...baseMotionProps}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            className="text-xs mb-2"
+          >
+            DEAR:
+          </motion.p></div>
+        {user.name.toUpperCase()}
       </motion.h1>
-      <motion.p
-        initial="hidden"
-        animate={isVisible ? "visible" : "hidden"}
-        variants={slideIn}
-        transition={{ duration: 0.6, delay: 0.9 }}
-        className="text-xs mb-14"
-      >
-        WE HOPE THIS MESSAGE FINDS YOU WELL
-        AND HAPPY TODAY, WE HAVE WONDERFUL NEWS TO SHARE WITH YOU THAT
-      </motion.p>
-      <motion.img
-        initial="hidden"
-        animate={isVisible ? "visible" : "hidden"}
-        variants={fadeInUp}
-        transition={{ duration: 0.6, delay: 1.2 }}
-        src={`${BASE_PATH}/images/crown.png`}
-        alt="Crown"
-        className="h-5 mb-20"
-      />
-      <motion.img
-        src={`${BASE_PATH}/images/scroll.png`}
-        alt="Scroll"
-        className="h-5"
-        animate={{
-          y: [0, -10, 0],
-          opacity: [0.6, 1, 0.6],
-        }}
-        transition={{
-          duration: 2,
-          repeat: Infinity,
-          repeatType: "loop",
-          ease: "easeInOut",
-        }}
-      />
+      <div className="flex justify-end items-center flex-col text-center">
+        <motion.p
+          {...baseMotionProps}
+          transition={{ duration: 0.5, delay: 1 }}
+          className="text-xs mb-10"
+        >
+          WE HOPE THIS MESSAGE FINDS YOU WELL
+          AND HAPPY TODAY, WE HAVE A WONDERFUL NEWS TO SHARE WITH YOU
+        </motion.p>
+        <motion.img
+          animate={{
+            y: [0, -10, 0],
+            opacity: [1, 0.6, 1],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          src={`${BASE_PATH}/images/scroll.png`}
+          alt="Scroll"
+          className="h-5"
+        />
+      </div>
     </div>
   );
 };

@@ -53,5 +53,25 @@ export const SSUsersService = {
   async getUniqueByValues() {
     const users = await this.getAllUsers();
     return [...new Set(users.map(user => user.by || 'Unknown'))].sort();
+  },
+
+  async getUsersWithDoaMessages() {
+    const users = await this.getAllUsers();
+    return users
+      .filter(user => user.doa_message && user.doa_message.trim() !== '')
+      .map(user => ({
+        name: user.name || 'Anonymous',
+        location: user.place_at || 'Unknown',
+        date: user.updated_doa_message_at || 'Unknown',
+        message: user.doa_message
+      }));
+  },
+
+  async updateUserMessage(userId, message) {
+    const userRef = doc(db, COLLECTION_NAME, userId);
+    return updateDoc(userRef, {
+      doa_message: message,
+      updated_doa_message_at: new Date().toISOString()
+    });
   }
 };

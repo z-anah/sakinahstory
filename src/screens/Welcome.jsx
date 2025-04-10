@@ -1,14 +1,16 @@
 import { motion } from "framer-motion";
-import { useNavigate, Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 const BASE_PATH = import.meta.env.BASE_URL;
 
-const Welcome = ({  }) => {
-  const navigate = useNavigate();
+
+const Welcome = ({ }) => {
+  const { id } = useParams();
+
 
   return (
-    <div className="min-h-[calc(97dvh)] flex justify-center items-center flex-col text-center p-2 bg-[url('/images/mobile.png')] bg-cover bg-center bg-no-repeat">
-      <Link 
-        to={`${BASE_PATH}/home`}
+    <div className="min-h-[calc(110dvh)] flex justify-center items-center flex-col text-center p-2 bg-[url('/images/mobile.png')] bg-cover bg-center bg-no-repeat">
+      <Link
+        to={`${BASE_PATH}/breaking-news/user/${id}`}
         className="px-4 py-2 duration-300 relative"
       >
         <motion.div

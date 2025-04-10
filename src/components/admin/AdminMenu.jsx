@@ -1,7 +1,6 @@
 const BASE_PATH = import.meta.env.BASE_URL;
 
 const menuItems = [
-  { path: '/home', label: 'Home' },
   { path: '/admin/url', label: 'URL' },
   { path: '/admin/login', label: 'Login' },
   { path: '/admin/dashboard', label: 'Dashboard' },

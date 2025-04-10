@@ -1,72 +1,68 @@
+import { useState, useEffect } from 'react';
 import '@styles/Home.css';
-import { motion, useAnimation } from "framer-motion";
-import { useRef, useState } from "react";
-import { CARD_HEIGHT, DRAG_VELOCITY_THRESHOLD, SPRING_CONFIG } from "../config/constants";
-import CardContainer from "@components/CardContainer";
 import WelcomeCard from "@components/WelcomeCard";
 import AnnouncementCard from "@components/AnnouncementCard";
 import GalleryTextCard from "@components/GalleryTextCard";
 import GalleryCard from "@components/GalleryCard";
 import CTACard from "@components/CTACard";
 import ChatCard from '@components/ChatCard';
+import AyahCard from '@components/AyahCard';
+import EndCard from '@components/EndCard';
+import { useParams } from 'react-router-dom';
+import { SSUsersService } from '../services/ss_users_service';
 
 const BASE_PATH = import.meta.env.BASE_URL;
-const cards = 6;
 
 const Home = () => {
-  const controls = useAnimation();
-  const containerRef = useRef(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [visibleCard, setVisibleCard] = useState(0);
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  const { id } = useParams();
+
+  const fetchUser = async () => {
+    try {
+      if (id) {
+        const userData = await SSUsersService.getUser(id);
+        setUser(userData);
+      }
+    } catch (error) {
+      console.error('Failed to fetch user:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchUser();
+  }, [id]);
 
   const cardComponents = [
     { Component: WelcomeCard },
     { Component: AnnouncementCard },
+    { Component: AyahCard },
     { Component: GalleryTextCard },
     { Component: GalleryCard },
-    { Component: CTACard },
-    { Component: ChatCard }
+    { Component: ChatCard },
+    { Component: CTACard, props: { onUserUpdate: fetchUser } },
+    { Component: EndCard },
   ];
 
-  const snapToIndex = (index) => {
-    setCurrentIndex(index);
-    setVisibleCard(index);
-    controls.start({
-      y: -index * CARD_HEIGHT,
-      transition: SPRING_CONFIG
-    });
-  };
+  if (loading) {
+    return <div className="min-h-screen bg-[url('/images/mobile.png')] bg-cover bg-center bg-repeat-y p-2">
+      <div className="flex items-center justify-center h-screen">
+        <div className="animate-spin text-4xl">⭮</div>
+      </div>
+    </div>;
+  }
 
   return (
-    <motion.div
-      className='home'
-      ref={containerRef}
-      drag="y"
-      dragConstraints={{ 
-        top: -(cards - 1) * CARD_HEIGHT, 
-        bottom: currentIndex === cards - 1 ? -(cards - 1) * CARD_HEIGHT : 0 
-      }}
-      onDragEnd={(event, info) => {
-        const velocity = info.velocity.y;
-        let newIndex = currentIndex;
-
-        if (velocity > DRAG_VELOCITY_THRESHOLD && currentIndex > 0) {
-          newIndex = currentIndex - 1;
-        } else if (velocity < -DRAG_VELOCITY_THRESHOLD && currentIndex < cards - 1) {
-          newIndex = currentIndex + 1;
-        }
-
-        snapToIndex(newIndex);
-      }}
-      animate={controls}
-      style={{ position: "relative" }}
-    >
-      {cardComponents.map(({ Component }, index) => (
-        <CardContainer key={index}>
-          <Component BASE_PATH={BASE_PATH} isVisible={visibleCard === index} />
-        </CardContainer>
+    <>
+      {cardComponents.map(({ Component, props = {} }, index) => (
+        <div key={index} className="home min-h-screen bg-[url('/images/mobile.png')] bg-cover bg-center bg-repeat-y p-2">
+          <Component BASE_PATH={BASE_PATH} isVisible={true} user={user} {...props} />
+        </div>
       ))}
-    </motion.div>
+    </>
   );
 };
 
