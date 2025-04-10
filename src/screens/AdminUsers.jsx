@@ -62,13 +62,29 @@ const AdminUsers = () => {
   };
 
   const handleCopyId = async (id) => {
-    navigator.clipboard.writeText(id);
     try {
-      await SSUsersController.updateUser(id, { shared: true });
-      await loadUsers();
+      await navigator.clipboard.writeText(id);
       alert(`ID ${id} copied to clipboard`);
     } catch (error) {
       console.error('Error updating shared status:', error);
+    }
+  };
+
+  const handleCopyMessage = async (userId) => {
+    const user = users.find(user => user.id === userId);
+    if (user) {
+      const message = `Hello dear ${user.name},\n\nWe've been preparing something very special and meaningful, and we're finally ready to share it with you. It's a joyful surprise that means a lot to us, and we hope it will make you smile too. Click the link below to discover it:\n\n<LINK>`;
+      try {
+        await navigator.clipboard.writeText(message);
+        await SSUsersController.updateUser(userId, { shared: true });
+        await loadUsers();
+        alert('Message copied to clipboard!');
+      } catch (error) {
+        console.error('Failed to copy message:', error);
+        alert('Failed to copy message. Please try again.');
+      }
+    } else {
+      alert('User not found');
     }
   };
 
@@ -203,9 +219,9 @@ const AdminUsers = () => {
                       <ShareIcon className="h-5 w-5 inline-block" aria-hidden="true" />
                     </button>
                     <button
-                      onClick={() => handleCopyId(user.id)}
+                      onClick={() => handleCopyMessage(user.id)}
                       className="text-gray-600 hover:text-gray-900 focus:outline-none mr-3"
-                      title="Copy ID"
+                      title="Copy Message"
                     >
                       <DocumentDuplicateIcon className="h-5 w-5 inline-block" aria-hidden="true" />
                     </button>

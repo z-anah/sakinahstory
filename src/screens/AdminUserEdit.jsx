@@ -13,7 +13,9 @@ const AdminUserEdit = () => {
     doa_message: '',
     place_at: '',
     shared: false,
-    by: ''  // Add this line
+    by: '',
+    has_seen_n_times: 0,
+    has_seen_last_at: 'Never'
   });
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -88,7 +90,8 @@ const AdminUserEdit = () => {
         <AdminMenu />
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-8">Edit User</h1>
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">Edit User</h1>
+        <p className="text-gray-500 mb-6">ID: {id}</p>
         
         {successMessage && (
           <div className="mb-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded">
@@ -189,7 +192,27 @@ const AdminUserEdit = () => {
                 />
               </div>
 
-              <div className="flex justify-end space-x-3">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mt-4">Times Viewed</label>
+                <input
+                  type="text"
+                  value={formData.has_seen_n_times || 0}
+                  className="mt-1 block w-full rounded-md border-gray-300 bg-gray-50 shadow-sm sm:text-sm"
+                  disabled
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mt-4">Last Viewed At</label>
+                <input
+                  type="text"
+                  value={formData.has_seen_last_at || 'Never'}
+                  className="mt-1 block w-full rounded-md border-gray-300 bg-gray-50 shadow-sm sm:text-sm"
+                  disabled
+                />
+              </div>
+
+              <div className="flex justify-end space-x-3 mt-4">
                 <button
                   type="button"
                   onClick={() => navigate(-1)}

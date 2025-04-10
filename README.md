@@ -6,7 +6,9 @@ user
   wa
   can_read_picture
   doa_message
+  updated_doa_message_at
   has_seen_n_times
+  has_seen_last_at
   place_at
 
 pages
