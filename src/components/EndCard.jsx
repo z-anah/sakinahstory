@@ -41,7 +41,7 @@ const EndCard = ({ isVisible }) => {
         whileInView={{ opacity: 1 }}
         whileHover={{ scale: 1.05 }}
         transition={{ duration: 0.3 }}
-        className="absolute bottom-1 px-6 py-3 bg-[#ffefcf10] backdrop-blur-sm rounded-lg border border-[#ffefcf30] shadow-lg hover:bg-[#ffefcf20] transition-all no-underline"
+        className="bottom-1 px-6 py-3 bg-[#ffefcf10] backdrop-blur-sm rounded-lg border border-[#ffefcf30] shadow-lg hover:bg-[#ffefcf20] transition-all no-underline"
       >
         <div className="flex items-center space-x-4">
           <span className="text-ms font-medium text-[#FFEFCF] mr-2">Made with <span className="text-xs font-medium text-[#FFEFCF]">❤️</span> by</span>

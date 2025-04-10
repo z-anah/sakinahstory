@@ -28,7 +28,7 @@ const WelcomeCard = ({ BASE_PATH, user }) => {
       <motion.h1
         {...baseMotionProps}
         transition={{ duration: 0.5, delay: 0.8 }}
-        className='text-2xl mb-14 absolute top-1/2 -translate-y-1/2 p-10'
+        className='text-2xl mb-14'
       >
         <div>
           <motion.p
