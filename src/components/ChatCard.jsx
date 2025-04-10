@@ -33,10 +33,10 @@ const ChatCard = ({ BASE_PATH, refreshTrigger }) => {
 
   return (
     <div className="min-h-[calc(90dvh)] flex justify-center items-center flex-col text-center p-2">
-      <div className="relative w-full h-[600px] flex items-center justify-center bg-[#131f1b]/70 rounded-lg px-10 py-5">
+      <div className="w-full h-[600px] flex items-center justify-between bg-[#131f1b]/70 rounded-lg px-10 py-5">
         <button
           onClick={handlePrevious}
-          className="absolute left-1 p-2 text-[#FFEFCF] hover:text-gray-700"
+          className="p-2 text-[#FFEFCF] hover:text-gray-700"
         >
           <ChevronLeftIcon className="h-4 w-4" />
         </button>
@@ -67,7 +67,7 @@ const ChatCard = ({ BASE_PATH, refreshTrigger }) => {
         </div>
         <button
           onClick={handleNext}
-          className="absolute right-1 p-2 text-[#FFEFCF] hover:text-gray-700"
+          className="p-2 text-[#FFEFCF] hover:text-gray-700"
         >
           <ChevronRightIcon className="h-4 w-4" />
         </button>
