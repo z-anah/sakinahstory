@@ -62,9 +62,22 @@ export const SSUsersService = {
       .map(user => ({
         name: user.name || 'Anonymous',
         location: user.place_at || 'Unknown',
-        date: user.updated_doa_message_at || 'Unknown',
+        date: user.updated_doa_message_at ? new Date(user.updated_doa_message_at).toLocaleString('en-US', {
+          month: 'short',
+          day: 'numeric',
+          year: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit',
+          hour12: true
+        }) : 'Unknown',
+        rawDate: user.updated_doa_message_at,
         message: user.doa_message
-      }));
+      }))
+      .sort((a, b) => {
+        if (!a.rawDate) return 1;
+        if (!b.rawDate) return -1;
+        return new Date(b.rawDate) - new Date(a.rawDate);
+      });
   },
 
   async updateUserMessage(userId, message) {
