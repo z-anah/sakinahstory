@@ -2,7 +2,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import { useState, useEffect } from "react";
 import { SSUsersService } from "../services/ss_users_service";
 
-const ChatCard = ({ BASE_PATH }) => {
+const ChatCard = ({ BASE_PATH, refreshTrigger }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [messages, setMessages] = useState([]);
 
@@ -11,12 +11,13 @@ const ChatCard = ({ BASE_PATH }) => {
       try {
         const doaMessages = await SSUsersService.getUsersWithDoaMessages();
         setMessages(doaMessages);
+        setCurrentIndex(0);
       } catch (error) {
         console.error('Failed to fetch doa messages:', error);
       }
     };
     fetchMessages();
-  }, []);
+  }, [refreshTrigger]);
 
   const handlePrevious = () => {
     setCurrentIndex((prev) => (prev === 0 ? messages.length - 1 : prev - 1));
@@ -55,6 +56,9 @@ const ChatCard = ({ BASE_PATH }) => {
               {messages[currentIndex].message}
             </h1>
           </div>
+          <p className="text-[#FFEFCF]/60 text-xs self-center">
+            {currentIndex + 1} / {messages.length}
+          </p>
           <img
             src={`${BASE_PATH}/images/chat 1.png`}
             alt="chat"

@@ -9,7 +9,15 @@ export const chatData = [
 
 export const ss_users2 = [
   {
-    "name": "Zaora Zulmianah 2",
+    "name": "Putri Test",
+    "wa": "+6287772897512",
+    "can_read_picture": false,
+    "place_at": "Depok, Indonesia",
+    "is_invited_dinner": true,
+    "by": "fahmi"
+  },
+  {
+    "name": "Fahmi Test",
     "wa": "+6287772897512",
     "can_read_picture": false,
     "place_at": "Depok, Indonesia",

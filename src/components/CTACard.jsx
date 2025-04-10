@@ -2,7 +2,7 @@ import { EnvelopeIcon, UserIcon } from "@heroicons/react/24/outline";
 import { useState, useEffect } from "react";
 import { SSUsersService } from '../services/ss_users_service';
 
-const CTACard = ({ user, onUserUpdate }) => {
+const CTACard = ({ user, onUserUpdate, onMessageUpdate }) => {
   const [isFocused, setIsFocused] = useState(false);
   const [message, setMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -25,6 +25,7 @@ const CTACard = ({ user, onUserUpdate }) => {
       await SSUsersService.updateUserMessage(user.id, message);
       setSubmitStatus('Message saved successfully!');
       if (onUserUpdate) onUserUpdate();
+      if (onMessageUpdate) onMessageUpdate();
     } catch (error) {
       console.error('Error saving message:', error);
       setSubmitStatus('Failed to save message. Please try again.');

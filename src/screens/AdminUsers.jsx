@@ -49,7 +49,7 @@ const AdminUsers = () => {
 
   const handleShare = async (wa, userId, userName) => {
     const message = encodeURIComponent(
-      `Hello dear ${userName},\n\nWe've been preparing something very special and meaningful, and we're finally ready to share it with you. It's a joyful surprise that means a lot to us, and we hope it will make you smile too. Click the link below to discover it:\n\n<LINK>`
+      `Hello dear ${userName},\n\nWe've been preparing something very special and meaningful, and we're finally ready to share it with you. It's a joyful surprise that means a lot to us, and we hope it will make you smile too. Click the link below to discover it:\n\nhttps://z-anah.github.io/sakinahstory/open/user/${userId}\n\n`
     );
     const whatsappUrl = `https://wa.me/${wa.replace(/\+/g, '')}?text=${message}`;
     window.open(whatsappUrl, '_blank');
@@ -73,7 +73,7 @@ const AdminUsers = () => {
   const handleCopyMessage = async (userId) => {
     const user = users.find(user => user.id === userId);
     if (user) {
-      const message = `Hello dear ${user.name},\n\nWe've been preparing something very special and meaningful, and we're finally ready to share it with you. It's a joyful surprise that means a lot to us, and we hope it will make you smile too. Click the link below to discover it:\n\n<LINK>`;
+      const message = `Hello dear ${user.name},\n\nWe've been preparing something very special and meaningful, and we're finally ready to share it with you. It's a joyful surprise that means a lot to us, and we hope it will make you smile too. Click the link below to discover it:\n\nhttps://z-anah.github.io/sakinahstory/open/user/${userId}\n\n`;
       try {
         await navigator.clipboard.writeText(message);
         await SSUsersController.updateUser(userId, { shared: true });

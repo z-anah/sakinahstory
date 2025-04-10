@@ -16,6 +16,7 @@ const BASE_PATH = import.meta.env.BASE_URL;
 const Home = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [doaRefreshTrigger, setDoaRefreshTrigger] = useState(0);
 
   const { id } = useParams();
 
@@ -36,14 +37,18 @@ const Home = () => {
     fetchUser();
   }, [id]);
 
+  const refreshDoaMessages = () => {
+    setDoaRefreshTrigger(prev => prev + 1);
+  };
+
   const cardComponents = [
     { Component: WelcomeCard },
     { Component: AnnouncementCard },
     { Component: AyahCard },
     { Component: GalleryTextCard },
     { Component: GalleryCard },
-    { Component: ChatCard },
-    { Component: CTACard, props: { onUserUpdate: fetchUser } },
+    { Component: ChatCard, props: { refreshTrigger: doaRefreshTrigger } },
+    { Component: CTACard, props: { onUserUpdate: fetchUser, onMessageUpdate: refreshDoaMessages } },
     { Component: EndCard },
   ];
 
