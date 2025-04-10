@@ -39,6 +39,16 @@ export const SSUsersController = {
     }
   },
 
+  async deleteUser(userId) {
+    try {
+      await SSUsersService.deleteUser(userId);
+      return { success: true, message: 'Successfully deleted user!' };
+    } catch (error) {
+      console.error('Error deleting user:', error);
+      throw error;
+    }
+  },
+
   async getUniqueByValues() {
     try {
       return await SSUsersService.getUniqueByValues();

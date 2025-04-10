@@ -1,4 +1,4 @@
-import { collection, addDoc, getDocs, getDoc, updateDoc, doc } from 'firebase/firestore';
+import { collection, addDoc, getDocs, getDoc, updateDoc, doc, deleteDoc } from 'firebase/firestore';
 import { db } from '../firebase/config';
 
 const COLLECTION_NAME = 'ss_users';
@@ -86,5 +86,22 @@ export const SSUsersService = {
       doa_message: message,
       updated_doa_message_at: new Date().toISOString()
     });
+  },
+
+  async updateViewStats(userId) {
+    const userRef = doc(db, COLLECTION_NAME, userId);
+    const userDoc = await getDoc(userRef);
+    if (!userDoc.exists()) return;
+    
+    const currentViews = userDoc.data().has_seen_n_times || 0;
+    return updateDoc(userRef, {
+      has_seen_n_times: currentViews + 1,
+      has_seen_last_at: new Date().toISOString()
+    });
+  },
+
+  async deleteUser(userId) {
+    const userRef = doc(db, COLLECTION_NAME, userId);
+    return deleteDoc(userRef);
   }
 };

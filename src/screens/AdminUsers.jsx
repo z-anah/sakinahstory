@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AdminMenu from "@components/admin/AdminMenu";
-import { PencilIcon, ShareIcon, DocumentDuplicateIcon, CheckCircleIcon, XCircleIcon, IdentificationIcon } from '@heroicons/react/20/solid';
+import { PencilIcon, ShareIcon, DocumentDuplicateIcon, CheckCircleIcon, XCircleIcon, IdentificationIcon, TrashIcon } from '@heroicons/react/20/solid';
 import { ss_users2 } from '../data/chatData';
 import { SSUsersController } from '../controllers/ss_users_controller';
 
@@ -109,6 +109,20 @@ const AdminUsers = () => {
       await loadUsers();
     } catch (error) {
       alert('Error importing users');
+    }
+  };
+
+  const handleDelete = async (userId) => {
+    if (!window.confirm('Are you sure you want to delete this user? This action cannot be undone.')) {
+      return;
+    }
+
+    try {
+      await SSUsersController.deleteUser(userId);
+      await loadUsers();
+      await loadGroupedUsers();
+    } catch (error) {
+      alert('Error deleting user');
     }
   };
 
@@ -230,6 +244,13 @@ const AdminUsers = () => {
                       className="text-indigo-600 hover:text-indigo-900 focus:outline-none"
                     >
                       <PencilIcon className="h-5 w-5 inline-block" aria-hidden="true" />
+                    </button>
+                    <button
+                      onClick={() => handleDelete(user.id)}
+                      className="text-red-600 hover:text-red-900 focus:outline-none ml-3"
+                      title="Delete User"
+                    >
+                      <TrashIcon className="h-5 w-5 inline-block" aria-hidden="true" />
                     </button>
                   </td>
                 </tr>

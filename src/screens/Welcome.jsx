@@ -1,14 +1,28 @@
 import { motion } from "framer-motion";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import { SSUsersService } from '../services/ss_users_service';
 const BASE_PATH = import.meta.env.BASE_URL;
 
 const Welcome = ({ }) => {
   const { id } = useParams();
+  const navigate = useNavigate();
+
+  const handleClick = async (e) => {
+    e.preventDefault();
+    try {
+      await SSUsersService.updateViewStats(id);
+      navigate(`${BASE_PATH}/breaking-news/user/${id}`);
+    } catch (error) {
+      console.error('Failed to update view stats:', error);
+      navigate(`${BASE_PATH}/breaking-news/user/${id}`);
+    }
+  };
 
   return (
     <div className="min-h-[calc(110dvh)] flex justify-center items-center flex-col text-center p-2 bg-[url('/images/mobile.png')] bg-cover bg-center bg-no-repeat">
-      <Link
-        to={`${BASE_PATH}/breaking-news/user/${id}`}
+      <a
+        href="#"
+        onClick={handleClick}
         className="px-4 py-2 duration-300 flex flex-col items-center no-underline"
       >
         <motion.div
@@ -19,7 +33,7 @@ const Welcome = ({ }) => {
         >
           OPEN
         </motion.div>
-      </Link>
+      </a>
     </div>
   );
 };
