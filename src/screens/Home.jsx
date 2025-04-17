@@ -41,15 +41,27 @@ const Home = () => {
     setDoaRefreshTrigger(prev => prev + 1);
   };
 
-  const cardComponents = [
+  const baseComponents = [
     { Component: WelcomeCard },
     { Component: AnnouncementCard },
     { Component: AyahCard },
+  ];
+
+  const galleryComponent = [
     { Component: GalleryTextCard },
-    { Component: GalleryCard },
+    { Component: GalleryCard }
+  ];
+
+  const endComponents = [
     { Component: ChatCard, props: { refreshTrigger: doaRefreshTrigger } },
     { Component: CTACard, props: { onUserUpdate: fetchUser, onMessageUpdate: refreshDoaMessages } },
     { Component: EndCard },
+  ];
+
+  const cardComponents = [
+    ...baseComponents,
+    ...(user?.can_read_picture ? galleryComponent : []),
+    ...endComponents
   ];
 
   if (loading) {

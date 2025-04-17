@@ -9,48 +9,12 @@ export const chatData = [
 
 export const ss_users2 = [
   {
-    "name": "Kiki Setia",
+    "name": "Zulmianah",
     "wa": "",
-    "can_read_picture": false,
+    "can_read_picture": true,
     "place_at": "Depok, Indonesia",
-    "by": "putri"
+    "by": "putri",
   },
-  {
-    "name": "Dian Novika",
-    "wa": "",
-    "can_read_picture": false,
-    "place_at": "Bantul, Indonesia",
-    "by": "putri"
-  },
-  {
-    "name": "Nadia Iliani",
-    "wa": "",
-    "can_read_picture": false,
-    "place_at": "Jakarta Timur, Indonesia",
-    "by": "putri"
-  },
-  {
-    "name": "Patricia Sekar",
-    "wa": "",
-    "can_read_picture": false,
-    "place_at": "Jakarta, Indonesia",
-    "by": "putri"
-  },
-  {
-    name: 'Bayu Saputra',
-    wa: '',
-    can_read_picture: false,
-    place_at: 'Jakarta Timur, Indonesia',
-    by: 'putri'
-  }
-  ,
-  {
-    name: 'Bapak Sitik & Ibu Suwanti',
-    wa: '',
-    can_read_picture: false,
-    place_at: 'Jakarta Timur, Indonesia',
-    by: 'putri'
-  }
 ];
 
 export const ss_users1 = [

@@ -3,9 +3,10 @@ import { motion } from 'framer-motion';
 
 const GalleryCard = ({ BASE_PATH, isVisible }) => {
   const images = [
-    'image1.jpeg',
-    'image2.jpeg',
-    'image3.jpeg',
+    '04.jpeg',
+    '07.jpeg',
+    '09.jpeg',
+    '01.jpeg',
   ];
 
   return (
@@ -22,7 +23,7 @@ const GalleryCard = ({ BASE_PATH, isVisible }) => {
               className="aspect-auto overflow-hidden rounded-lg hover:scale-102"
             >
               <img
-                src={`${BASE_PATH}/images/${image}`}
+                src={`${BASE_PATH}/images/pictures/${image}`}
                 alt={`Wedding moment ${index + 1}`}
                 className="w-full h-full object-cover"
               />

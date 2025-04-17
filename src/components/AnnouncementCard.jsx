@@ -30,7 +30,7 @@ const AnnouncementCard = ({ BASE_PATH, isVisible }) => {
         </h1>
       </div>
       <div className="bg-[#FFEFCF] text-black shadow-lg rounded-xl flex justify-between items-center flex-col text-center p-4 max-w-md mx-auto">
-        <h5 className="text-xs mb-2">
+        <h5 className="text-md mb-2 font-bold">
           ARE MARRIED
         </h5>
         <h4 className="text-xs mb-2">
