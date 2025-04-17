@@ -126,6 +126,10 @@ const AdminUsers = () => {
     }
   };
 
+  const handleCreate = () => {
+    navigate(`${BASE_PATH}/admin/user/create`);
+  };
+
   const filteredUsers = selectedBy === 'all'
     ? users
     : users.filter(user => (user.by || 'Unknown') === selectedBy);
@@ -151,6 +155,12 @@ const AdminUsers = () => {
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-3xl font-bold text-gray-900">User Management</h1>
           <div className="flex gap-4 items-center">
+            <button
+              onClick={handleCreate}
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            >
+              Create User
+            </button>
             <button
               onClick={handleImportSSUsers}
               className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"

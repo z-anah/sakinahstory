@@ -52,7 +52,7 @@ const ChatCard = ({ BASE_PATH, refreshTrigger }) => {
               <p className="text-[#FFEFCF]/80 text-xs">{messages[currentIndex].location}</p>
               <p className="text-[#FFEFCF]/60 text-xs">{messages[currentIndex].date}</p>
             </div>
-            <h1 className="text-[#FFEFCF] italic text-sm max-h-[500px] overflow-y-auto">
+            <h1 className="text-[#FFEFCF] italic text-sm max-h-[500px] overflow-y-auto whitespace-pre-wrap">
               {messages[currentIndex].message}
             </h1>
           </div>

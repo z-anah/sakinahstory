@@ -8,6 +8,7 @@ import AdminDoaMessages from '@screens/AdminDoaMessages';
 import AdminURL from '@screens/AdminURL';
 import AdminUserEdit from '@screens/AdminUserEdit';
 import NotFound from '@screens/NotFound';
+import AdminUserCreate from '@screens/AdminUserCreate';
 
 const App = () => {
   const BASE_PATH = import.meta.env.BASE_URL;
@@ -21,6 +22,7 @@ const App = () => {
       <Route element={<AdminDashboard />} path={BASE_PATH + '/admin/dashboard'} />
       <Route element={<AdminUsers />} path={BASE_PATH + '/admin/users'} />
       <Route element={<AdminUserEdit />} path={BASE_PATH + '/admin/user/:id/edit'} />
+      <Route element={<AdminUserCreate />} path={BASE_PATH + '/admin/user/create'} />
       <Route element={<AdminDoaMessages />} path={BASE_PATH + '/admin/doa-messages'} />
 
       <Route element={<NotFound />} path="*" />
