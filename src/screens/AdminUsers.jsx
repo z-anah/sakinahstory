@@ -88,6 +88,19 @@ const AdminUsers = () => {
     }
   };
 
+  const handleCopyAllMessagesByWeni = async () => {
+    const weniUsers = users.filter(user => user.by === 'weni');
+    const messages = weniUsers.map(user => {
+      return `Hello dear ${user.name},\n\nWe've been preparing something very special and meaningful, and we're finally ready to share it with you. It's a joyful surprise that means a lot to us, and we hope it will make you smile too.\nClick the link below to discover it:\n\nhttps://z-anah.github.io/sakinahstory/open/user/${user.id}\n\n`;
+    }).join('\n\n');
+
+    try {
+      console.log(messages);
+    } catch (error) {
+      console.error('Failed to copy all messages:', error);
+      alert('Failed to copy all messages. Please try again.');
+    }
+  }
   const handleEdit = (userId) => {
     navigate(`${BASE_PATH}/admin/user/${userId}/edit`);
   };
@@ -155,6 +168,12 @@ const AdminUsers = () => {
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-3xl font-bold text-gray-900">User Management</h1>
           <div className="flex gap-4 items-center">
+            <button
+              onClick={handleCopyAllMessagesByWeni}
+              className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded"
+            >
+              Copy All Messages by Weni 
+            </button>
             <button
               onClick={handleCreate}
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"

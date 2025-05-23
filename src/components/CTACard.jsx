@@ -58,7 +58,7 @@ const CTACard = ({ user, onUserUpdate, onMessageUpdate }) => {
         <textarea
           id="message"
           placeholder="Write here..."
-          maxLength={700}
+          maxLength={300}
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           className={`w-full p-3 rounded-lg bg-[#131f1b] text-[#FFEFCF] placeholder-[#273933]/60 border-2 transition-all duration-200 ${isFocused ? 'border-[#FFEFCF]' : 'border-transparent'
@@ -67,7 +67,7 @@ const CTACard = ({ user, onUserUpdate, onMessageUpdate }) => {
           onBlur={() => setIsFocused(false)}
         />
         <div className="text-xs text-[#FFEFCF]/60 text-right mb-7">
-          {message.length}/700 characters
+          {message.length}/300 characters
         </div>
       </div>
 

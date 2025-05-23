@@ -9,13 +9,499 @@ export const chatData = [
 
 export const ss_users2 = [
   {
-    "name": "Zulmianah",
-    "wa": "",
-    "can_read_picture": true,
-    "place_at": "Depok, Indonesia",
-    "by": "putri",
+    "name": "Bude Lies",
+    "can_read_picture": false,
+    "place_at": "Depok",
+    "by": "weni"
   },
+  {
+    "name": "Bude Mimi Intiar",
+    "can_read_picture": false,
+    "place_at": "Bintaro",
+    "by": "weni"
+  },
+  {
+    "name": "Mas Sastyo Aji.D",
+    "can_read_picture": false,
+    "place_at": "Jakarta",
+    "by": "weni"
+  },
+  {
+    "name": "Bude Susy.w",
+    "can_read_picture": false,
+    "place_at": "Depok",
+    "by": "weni"
+  },
+  {
+    "name": "Ase Indri Hastuti",
+    "can_read_picture": false,
+    "place_at": "Cimahi",
+    "by": "weni"
+  },
+  {
+    "name": "Pakde Satrio Wibowo",
+    "can_read_picture": false,
+    "place_at": "Kalimantan",
+    "by": "weni"
+  },
+  {
+    "name": "Mbak Yusti",
+    "can_read_picture": false,
+    "place_at": "Jakarta",
+    "by": "weni"
+  },
+  {
+    "name": "Ibu Haya",
+    "can_read_picture": false,
+    "place_at": "Depok",
+    "by": "weni"
+  },
+  {
+    "name": "Ibu Nurul",
+    "can_read_picture": false,
+    "place_at": "Jakarta",
+    "by": "weni"
+  },
+  {
+    "name": "Ibu Widyanti",
+    "can_read_picture": false,
+    "place_at": "Depok",
+    "by": "weni"
+  },
+  {
+    "name": "Ibu Vera",
+    "can_read_picture": false,
+    "place_at": "",
+    "by": "weni"
+  },
+  {
+    "name": "Alia Adam",
+    "can_read_picture": false,
+    "place_at": "Depok",
+    "by": "weni"
+  },
+  {
+    "name": "Eti Suharti",
+    "can_read_picture": false,
+    "place_at": "Depok",
+    "by": "weni"
+  },
+  {
+    "name": "Ibu Lia",
+    "can_read_picture": false,
+    "place_at": "Jakarta",
+    "by": "weni"
+  },
+  {
+    "name": "Sinarwaty",
+    "can_read_picture": false,
+    "place_at": "",
+    "by": "weni"
+  },
+  {
+    "name": "Endang Idris",
+    "can_read_picture": false,
+    "place_at": "",
+    "by": "weni"
+  },
+  {
+    "name": "Rini Purwani",
+    "can_read_picture": false,
+    "place_at": "Purwakarta",
+    "by": "weni"
+  },
+  {
+    "name": "Miluh hj Neneng Herawati",
+    "can_read_picture": false,
+    "place_at": "Pageularan",
+    "by": "weni"
+  },
+  {
+    "name": "Mang Darus",
+    "can_read_picture": false,
+    "place_at": "Sukabumi",
+    "by": "weni"
+  },
+  {
+    "name": "Ayie Rahmat",
+    "can_read_picture": false,
+    "place_at": "",
+    "by": "weni"
+  },
+  {
+    "name": "Yayah Maryati",
+    "can_read_picture": false,
+    "place_at": "",
+    "by": "weni"
+  },
+  {
+    "name": "Asep Taufik",
+    "can_read_picture": false,
+    "place_at": "",
+    "by": "weni"
+  },
+  {
+    "name": "Engkus",
+    "can_read_picture": false,
+    "place_at": "",
+    "by": "weni"
+  },
+  {
+    "name": "Tutiyanadede",
+    "can_read_picture": false,
+    "place_at": "",
+    "by": "weni"
+  },
+  {
+    "name": "Aden",
+    "can_read_picture": false,
+    "place_at": "",
+    "by": "weni"
+  },
+  {
+    "name": "Bastaman",
+    "can_read_picture": false,
+    "place_at": "",
+    "by": "weni"
+  },
+  {
+    "name": "Tedi Setiadi",
+    "can_read_picture": false,
+    "place_at": "",
+    "by": "weni"
+  },
+  {
+    "name": "Edi.M",
+    "can_read_picture": false,
+    "place_at": "",
+    "by": "weni"
+  },
+  {
+    "name": "Engkuskosasih",
+    "can_read_picture": false,
+    "place_at": "",
+    "by": "weni"
+  },
+  {
+    "name": "Ida",
+    "can_read_picture": false,
+    "place_at": "",
+    "by": "weni"
+  },
+  {
+    "name": "Natriah",
+    "can_read_picture": false,
+    "place_at": "",
+    "by": "weni"
+  },
+  {
+    "name": "NoniMaelani",
+    "can_read_picture": false,
+    "place_at": "",
+    "by": "weni"
+  },
+  {
+    "name": "Nuraeni",
+    "can_read_picture": false,
+    "place_at": "",
+    "by": "weni"
+  },
+  {
+    "name": "Rahmatiyah Mulyani",
+    "can_read_picture": false,
+    "place_at": "",
+    "by": "weni"
+  },
+  {
+    "name": "Sartika",
+    "can_read_picture": false,
+    "place_at": "",
+    "by": "weni"
+  },
+  {
+    "name": "Wawawarmiati",
+    "can_read_picture": false,
+    "place_at": "",
+    "by": "weni"
+  },
+  {
+    "name": "Yeyet Astuti",
+    "can_read_picture": false,
+    "place_at": "",
+    "by": "weni"
+  },
+  {
+    "name": "Yudi",
+    "can_read_picture": false,
+    "place_at": "",
+    "by": "weni"
+  },
+  {
+    "name": "Ade Santi",
+    "can_read_picture": false,
+    "place_at": "Bogor",
+    "by": "weni"
+  },
+  {
+    "name": "A.Feri Nuryanto",
+    "can_read_picture": false,
+    "place_at": "Sukanagars",
+    "by": "weni"
+  },
+  {
+    "name": "Ade Gungun",
+    "can_read_picture": false,
+    "place_at": "Cilegon",
+    "by": "weni"
+  },
+  {
+    "name": "Ade Teguh",
+    "can_read_picture": false,
+    "place_at": "Pageularan",
+    "by": "weni"
+  },
+  {
+    "name": "Nurma",
+    "can_read_picture": false,
+    "place_at": "Sukanagara",
+    "by": "weni"
+  },
+  {
+    "name": "Ade Upi",
+    "can_read_picture": false,
+    "place_at": "Sukabumi",
+    "by": "weni"
+  },
+  {
+    "name": "Ade Farid",
+    "can_read_picture": false,
+    "place_at": "Sukabumi",
+    "by": "weni"
+  },
+  {
+    "name": "A.Dada",
+    "can_read_picture": false,
+    "place_at": "",
+    "by": "weni"
+  },
+  {
+    "name": "Efay Rusli",
+    "can_read_picture": false,
+    "place_at": "",
+    "by": "weni"
+  },
+  {
+    "name": "Ani Mulyani",
+    "can_read_picture": false,
+    "place_at": "",
+    "by": "weni"
+  },
+  {
+    "name": "Haryati",
+    "can_read_picture": false,
+    "place_at": "",
+    "by": "weni"
+  },
+  {
+    "name": "Heni",
+    "can_read_picture": false,
+    "place_at": "",
+    "by": "weni"
+  },
+  {
+    "name": "Patimah",
+    "can_read_picture": false,
+    "place_at": "",
+    "by": "weni"
+  },
+  {
+    "name": "Neng Yani",
+    "can_read_picture": false,
+    "place_at": "",
+    "by": "weni"
+  },
+  {
+    "name": "Fatimah",
+    "can_read_picture": false,
+    "place_at": "",
+    "by": "weni"
+  },
+  {
+    "name": "Iis Wita",
+    "can_read_picture": false,
+    "place_at": "",
+    "by": "weni"
+  },
+  {
+    "name": "Ina",
+    "can_read_picture": false,
+    "place_at": "",
+    "by": "weni"
+  },
+  {
+    "name": "Lilis Suryamah",
+    "can_read_picture": false,
+    "place_at": "",
+    "by": "weni"
+  },
+  {
+    "name": "Siti Suhartini",
+    "can_read_picture": false,
+    "place_at": "",
+    "by": "weni"
+  },
+  {
+    "name": "Neng Wiwi",
+    "can_read_picture": false,
+    "place_at": "",
+    "by": "weni"
+  },
+  {
+    "name": "Yan Lucky",
+    "can_read_picture": false,
+    "place_at": "",
+    "by": "weni"
+  },
+  {
+    "name": "Ibu Sriutami",
+    "can_read_picture": false,
+    "place_at": "Depok",
+    "by": "weni"
+  },
+  {
+    "name": "Ibu Indah",
+    "can_read_picture": false,
+    "place_at": "Depok",
+    "by": "weni"
+  },
+  {
+    "name": "Ibu",
+    "can_read_picture": false,
+    "place_at": "",
+    "by": "weni"
+  },
+  {
+    "name": "Ade Nunung",
+    "can_read_picture": false,
+    "place_at": "Pageularan",
+    "by": "weni"
+  },
+  {
+    "name": "Ade NuruL",
+    "can_read_picture": false,
+    "place_at": "Pakan baru",
+    "by": "weni"
+  },
+  {
+    "name": "Ibu Wasna",
+    "can_read_picture": false,
+    "place_at": "",
+    "by": "weni"
+  },
+  {
+    "name": "Bang Arin",
+    "can_read_picture": false,
+    "place_at": "Jakarta",
+    "by": "weni"
+  },
+  {
+    "name": "Bibi Titi",
+    "can_read_picture": false,
+    "place_at": "Sukabumi",
+    "by": "weni"
+  },
+  {
+    "name": "Uni ALiya",
+    "can_read_picture": false,
+    "place_at": "Jakarta",
+    "by": "weni"
+  },
+  {
+    "name": "Ibu Ati Sukatno",
+    "can_read_picture": false,
+    "place_at": "Den Pasar BaLi",
+    "by": "weni"
+  },
+  {
+    "name": "Teh Lilis",
+    "can_read_picture": false,
+    "place_at": "Sukanagara",
+    "by": "weni"
+  },
+  {
+    "name": "Neng Diah",
+    "can_read_picture": false,
+    "place_at": "",
+    "by": "weni"
+  },
+  {
+    "name": "Ibu Annisa Rahmawati",
+    "can_read_picture": false,
+    "place_at": "Pretoria",
+    "by": "weni"
+  },
+  {
+    "name": "Ibu Verra",
+    "can_read_picture": false,
+    "place_at": "",
+    "by": "weni"
+  },
+  {
+    "name": "Neng Sri",
+    "can_read_picture": false,
+    "place_at": "Wa Santa Cirebon",
+    "by": "weni"
+  },
+  {
+    "name": "Tante Ruli",
+    "can_read_picture": false,
+    "place_at": "Perancis",
+    "by": "weni"
+  },
+  {
+    "name": "Pakde Arief",
+    "can_read_picture": false,
+    "place_at": "",
+    "by": "weni"
+  },
+  {
+    "name": "Ibu Anie Rabe",
+    "can_read_picture": false,
+    "place_at": "Madagascar",
+    "by": "weni"
+  },
+  {
+    "name": "Ibu Ustadzah Mariata Diny",
+    "can_read_picture": false,
+    "place_at": "Antananarivo",
+    "by": "weni"
+  },
+  {
+    "name": "Ibu Nani Soemantri",
+    "can_read_picture": false,
+    "place_at": "Jakarta",
+    "by": "weni"
+  },
+  {
+    "name": "Karina Widya",
+    "can_read_picture": false,
+    "place_at": "Jakarta",
+    "by": "weni"
+  },
+  {
+    "name": "Ibu Nova Dewi Yani",
+    "can_read_picture": false,
+    "place_at": "Bogor",
+    "by": "weni"
+  },
+  {
+    "name": "Ibu Wiwi",
+    "can_read_picture": false,
+    "place_at": "Antananarivo",
+    "by": "weni"
+  }
 ];
+
 
 export const ss_users1 = [
   {

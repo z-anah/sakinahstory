@@ -20,6 +20,7 @@ const AdminUserCreate = () => {
   });
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(false);
 
   const handleChange = (e) => {
     const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
@@ -33,14 +34,29 @@ const AdminUserCreate = () => {
     e.preventDefault();
     setSaving(true);
     setError(null);
+    setSuccess(false);
     
     try {
       await SSUsersService.importUsers([formData]);
-      navigate(`${BASE_PATH}/admin/users`);
+      setSuccess(true);
+      setFormData({
+        name: '',
+        wa: '',
+        can_read_picture: false,
+        doa_message: '',
+        place_at: '',
+        shared: false,
+        by: '',
+        has_seen_n_times: 0,
+        has_seen_last_at: 'Never'
+      });
+      setTimeout(() => {
+        setSuccess(false);
+      }, 3000);
     } catch (error) {
       setError('Failed to create user');
-      setSaving(false);
     }
+    setSaving(false);
   };
 
   return (
@@ -54,6 +70,12 @@ const AdminUserCreate = () => {
         {error && (
           <div className="mb-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded">
             {error}
+          </div>
+        )}
+
+        {success && (
+          <div className="mb-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded">
+            User created successfully!
           </div>
         )}
 
